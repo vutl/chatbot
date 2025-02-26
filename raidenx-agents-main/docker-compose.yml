@@ -1,0 +1,19 @@
+version: '3'
+services:
+  raidenx-agents:
+    build:
+      context: .
+    ports:
+      - "4009:4009"
+    volumes:
+      - ./:/app
+    env_file:
+      - .env
+    networks:
+      - raidenx-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+networks:
+  raidenx-network:
+    driver: bridge
